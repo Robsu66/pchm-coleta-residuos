@@ -35,4 +35,10 @@ def cruzamento_ox(pai1, pai2):
             posicao_filho = (posicao_filho + 1) % tamanho
         posicao_pai2 = (posicao_pai2 + 1) % tamanho
     return filho
-    
+
+def mutacao_troca(cromossomo, taxa_mutacao):
+    if random.random() > taxa_mutacao:
+        i, j = random.sample(range(len(cromossomo)), 2)
+        cromossomo[i], cromossomo[j] = cromossomo[j],
+        cromossomo[i]
+    return cromossomo
