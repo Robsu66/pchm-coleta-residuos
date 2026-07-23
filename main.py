@@ -2,6 +2,8 @@ import numpy as np
 from dados_matriz import matriz_distancias, matriz_tempo, nomes_pontos
 from vizinho_mais_proximo import rota_vizinho_mais_proximo
 from cheapest_insertion import rota_aresta_mais_baratas
+from algoritmo_genetico import rota_algoritmo_genetico
+from dois_opt import rota_2opt
 from utils import calcular_custo_total
 
 # Índices fixos
@@ -19,6 +21,19 @@ print(f"Distância: {dist_vm} metros | Tempo: {tempo_vm} segundos\n")
 caminho_ab, dist_ab = rota_aresta_mais_baratas(matriz_distancias, nomes_pontos, indice_garagem, indice_lixao)
 tempo_ab = calcular_custo_total(matriz_tempo, caminho_ab)
 print(f"Distância: {dist_ab} metros | Tempo: {tempo_ab} segundos\n")
+
+caminho_ab, dist_ab = rota_2opt(matriz_distancias, caminho_ab, nomes_pontos)
+tempo_ab = calcular_custo_total(matriz_tempo, caminho_ab)
+print(f"Distância: {dist_ab} metros | Tempo: {tempo_ab} segundos\n")
+
+# Algoritmo genético com foco em distância
+caminho_ag, dist_ag = rota_algoritmo_genetico(matriz_distancias, nomes_pontos, indice_garagem, indice_lixao)
+tempo_ag = calcular_custo_total(matriz_tempo, caminho_ag)
+print(f"Distância: {dist_ag} metros | Tempo: {tempo_ag} segundos\n")
+
+caminho_ag, dist_ag = rota_2opt(matriz_distancias, caminho_ag, nomes_pontos)
+tempo_ag = calcular_custo_total(matriz_tempo, caminho_ag)
+print(f"Distância: {dist_ag} metros | Tempo: {tempo_ag} segundos\n")
 
 print("\n\n")
 
